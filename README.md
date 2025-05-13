@@ -16,6 +16,8 @@ Features:
 
 * Built on React
 
-* Fully functional rendering books, allowing cerate and update cart and create orders
+* Fully functional rendering books, allowing create / update carts and create orders
+
+* Data persisted on backend invoking Restful API with fetch requests
 
 * Basic authentication
