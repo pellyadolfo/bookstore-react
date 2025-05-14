@@ -28,7 +28,7 @@ function App() {
 			.catch((error) => {
 				console.error('Error:', error);
 				console.log("server is down!!")   
-			});;
+			});
 	}, []);
 
   const updateQuantity = (bookId, increment) => {
@@ -58,7 +58,11 @@ function App() {
 				setCart(newCart);
 				setCartCount(Object.values(newCart).reduce((a, b) => a + b, 0));
 
-	    });
+	    })
+			.catch((error) => {
+				console.error('Error:', error);
+				console.log("server is down!!")   
+			});
 
   };
 
@@ -77,6 +81,10 @@ function App() {
 			.then(i => {
 				setProcessing(false);
 				updateQuantity(1, 0)
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+				console.log("server is down!!")   
 			});
   };
 
@@ -98,6 +106,10 @@ function App() {
 				updateQuantity(1, 0)
 
 				returnToStore();
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+				console.log("server is down!!")   
 			});
 
 			return false;
