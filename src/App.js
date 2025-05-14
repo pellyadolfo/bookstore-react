@@ -34,7 +34,7 @@ function App() {
   const updateQuantity = (bookId, increment) => {
 
 		// update cart in server
-		const authHeader = 'Basic ' + btoa('testuser' + ':' + 'testpassword');
+		const authHeader = 'Basic ' + btoa('testuser:testpassword');
 		const body = { "bookId" : bookId, "quantity" : increment }
 		console.log("body: ", body)
 		setProcessing(true);
@@ -70,7 +70,7 @@ function App() {
 
 		// update cart in server
 		setProcessing(true)
-		const authHeader = 'Basic ' + btoa('testuser' + ':' + 'testpassword');
+		const authHeader = 'Basic ' + btoa('testuser:testpassword');
 		fetch('http://localhost:8080/api/carts/user/1/items/' + id, {
 				method: 'delete',
 				headers: {
@@ -92,7 +92,7 @@ function App() {
 		event.preventDefault(); 
 
 		setProcessing(true)
-		const authHeader = 'Basic ' + btoa('testuser' + ':' + 'testpassword');
+		const authHeader = 'Basic ' + btoa('testuser:testpassword');
 		fetch('http://localhost:8080/api/orders/user/1/checkout', {
 				method: 'post',
 				headers: {
