@@ -24,7 +24,11 @@ function App() {
 				setBooks(books)
 
 				updateQuantity(1, 0)
-    	});
+    	})
+			.catch((error) => {
+				console.error('Error:', error);
+				console.log("server is down!!")   
+			});;
 	}, []);
 
   const updateQuantity = (bookId, increment) => {
