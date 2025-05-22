@@ -23,13 +23,44 @@ function App() {
 				});
 				setBooks(books)
 
-				updateQuantity(1, 0)
+				fetchCart(1)
     	})
 			.catch((error) => {
 				console.error('Error:', error);
 				console.log("server is down!!")   
 			});
 	}, []);
+
+  const fetchCart = (userId) => {
+
+		// update cart in server
+		const authHeader = 'Basic ' + btoa('testuser:testpassword');
+		setProcessing(true);
+    fetch('http://localhost:8080/api/carts/user/' + userId, {
+				method: 'get',
+				headers: {
+					'Authorization': authHeader,
+				}
+			})
+      .then(r => r.json())
+      .then(data => {
+				setProcessing(false);
+
+				let newCart = {}
+				data.items.forEach((item) => {
+					newCart[item.bookId] = item.quantity;
+				})
+
+				setCart(newCart);
+				setCartCount(Object.values(newCart).reduce((a, b) => a + b, 0));
+
+	    })
+			.catch((error) => {
+				console.error('Error:', error);
+				console.log("server is down!!")   
+			});
+
+  };
 
   const updateQuantity = (bookId, increment) => {
 
@@ -80,7 +111,7 @@ function App() {
 			})
 			.then(i => {
 				setProcessing(false);
-				updateQuantity(1, 0)
+				fetchCart(1)
 			})
 			.catch((error) => {
 				console.error('Error:', error);
@@ -103,7 +134,7 @@ function App() {
 			.then(i => {
 				setProcessing(false);
 
-				updateQuantity(1, 0)
+				fetchCart(1)
 
 				returnToStore();
 			})
