@@ -164,7 +164,6 @@ function App() {
       <Navbar 
         cartCount={cartCount} 
         showCart={() => setIsCartVisible(!isCartVisible)} 
-        isCartVisible={isCartVisible}
 				processing={processing}
 			/>
       

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = ({ cartCount, showCart, isCartVisible , processing}) => {
+const Navbar = ({ cartCount, showCart, processing}) => {
   return (
     <nav className="navbar">
       <h1>Online Bookstore</h1>
